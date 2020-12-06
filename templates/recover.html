@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recover Password
+{% endblock %}
+
+{% block main %}
+    <div class="container p-5" style="display: block; text-align: center;">
+      <h2>FORGOT YOUR PASSWORD?</h2>
+      {% if not status %}
+      <h5>Let's recover it!</h5>
+      <p>Submit the e-mail address that you used during registration and we'll send you instructions how to update your password.</p>
+
+      <form action="/recover_password" method="post" style="margin-top: 2em;" onsubmit="not_empty('name', 'name', 'email')">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control input-reg" name="username" placeholder="Your name" type="text" id="name">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control input-reg" name="email" placeholder="E-mail" type="text" id="email">
+        </div>
+        <button class="btn btn2" type="submit">SUBMIT</button>
+      </form>
+
+      {% else %}
+      <p>{{ status }}</p>
+      {% endif %}
+
+    </div>
+
+    <img src="/static/castle_mainpage.jpg" style="width: 100%">
+
+{% endblock %}

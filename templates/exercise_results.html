@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Exercise - Results
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="text-align: center; margin-bottom: 2em; margin-top: 1em">
+        <h2>EXERCISE IS OVER</h1>
+        <h5>HERE IS YOUR RESULT</h4>
+    </div>
+
+    <div class="container" style="background-color: #f1edce; box-shadow: 0 0 10px rgba(0,0,0,0.5); width: 50%">
+        <h5 style="text-align: center; padding-top: 0.5em;">{{ message }}</h5>
+
+        <div>
+            <p>You did <strong>{{ num_of_exercises }} exercises</strong> and made <strong>{{ total_wrong }}</strong>
+            mistakes out of <strong>{{ total_questions }}</strong> questions.<br>
+            Your score is
+            {% if score > 84 %}
+                <span class="green">{{ score }}%</span>
+            {% elif score > 65 %}
+                <span class="orange">{{ score }}%</span>
+            {% else %}
+                <span style="color: #930000; font-weight: bold;">{{ score }}%</span>
+            {% endif %}
+            </p>
+            <p>{{ message2 }}</p>
+        </div>
+
+        <div style="padding-bottom: 1em;">
+            <a class="btn btn2" style="display:inline;" href="/exercise" role="button">CHOOSE ANOTHER EXERCISE</a>
+            <a class="btn btn2" style="display:inline;" href="/learn" role="button">STUDY THIS TOPIC</a>
+        </div>
+
+    </div>
+
+
+{% endblock %}

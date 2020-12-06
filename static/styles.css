@@ -1,0 +1,275 @@
+  .white_text {
+    color: white;
+  }
+
+  .footer {
+    position: absolute;
+
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    background-color: #313914;
+  }
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+    font-family: Verdana;
+  }
+
+  /* social media icons */
+  .fa {
+   margin-left: 20px;
+   margin-right: 20px;
+   color: black;
+  }
+
+  .fa:hover {
+    color: black;
+    text-decoration: none;
+    opacity: 0.7;
+  }
+
+  hr {
+    border-top: 2px solid #91976c;
+    width: 90%;
+    height: 10px;
+    margin-top: 30px;
+  }
+
+  .table td
+  {
+    border-color: #91976c;
+  }
+
+  .table th
+  {
+    border-color: #91976c !important;
+    border-top: 0px !important;
+  }
+
+  /* my green buttons*/
+  .btn2 {
+    background-color: #313914;
+    color: white;
+
+  }
+
+  .btn2:hover {
+    background-color: #91976c;
+    color: white;
+  }
+
+  .btn_orange {
+    background-color: #CC7300;
+    color: white;
+  }
+
+  .btn_orange:hover {
+    background-color: #e0993d;
+    color: white;
+  }
+
+  .btn_red {
+    background-color: #930000;
+    color: white;
+  }
+
+  .btn_red:hover {
+    background-color: #994949;
+    color: white;
+  }
+
+  /*My input fields for login and registration */
+  .input-reg {
+    border: 2px solid #313914;
+
+  }
+
+  .green_link {
+    color: black;
+  }
+
+  .green_link:hover {
+    color: #6a7347;
+    text-decoration: none;
+  }
+
+  .white_link {
+    color: white;
+    display: block;
+  }
+
+  /* if screen is big enough our panel will be small in width */
+  @media screen and (min-width: 768px) {
+    .col-md {
+    flex: 0 1 17rem;
+          }
+    .mobile {
+      width: 50%
+    }
+  }
+
+
+
+  .white_link:hover {
+    color: #D1D2AB;
+    text-decoration: none;
+  }
+
+  .input-reg:focus {
+    outline:none;
+    -webkit-appearance:none;
+    box-shadow: none;
+    border: 4px solid #313914;
+  }
+
+  .fa {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+   }
+
+   .fa:hover {
+     color: black;
+     text-decoration: none;
+     opacity: 0.7;
+   }
+
+   .animated {
+     transition-property: width;
+     transition-duration: 4s;
+   }
+
+   .parallax {
+    background-image: url("img/library.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ygr {
+      background-color: yellowgreen;
+  }
+
+  .gray {
+      background-color: gray;
+  }
+
+  .grammar {
+    color: black;
+  }
+
+  .grammar:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+
+/* style for question gallery */
+
+.Portfolio {
+  position: relative;
+  background-color: #d1d2ab;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin: 1em;
+  float: left;
+  width: 240px;
+  height: 140px;
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  animation: winanim 0.5s ;
+  -webkit-backface-visibility:visible;
+  backface-visibility:visible;
+
+}
+
+.Portfolio:hover {
+  background: #91976c;
+}
+
+
+.desc {
+  padding: 5px;
+  text-align: center;
+  font-size: 90%;
+  background:yellowgreen;
+  color:black
+}
+
+.nav {
+  padding:20px;
+  margin-top:-30px;
+}
+
+.nav li a {
+  margin:5px;
+  padding: 15px 50px;
+  font-size:16px;
+  color: white;
+  background: #91976c;
+  transition-duration: 0.4s;
+}
+.nav a:hover {
+  background:#6a7347;
+}
+.nav .active {
+  background-color: #313914 !important;
+  color: white;
+}
+
+@keyframes winanim {
+  0%{opacity:0;transform:scale3d(.3,.3,.3)}
+  50%{opacity:1}
+
+}
+
+.mybutt {
+background: white;
+color: black;
+border: 2px solid yellowgreen;
+
+}
+
+.mybutt:hover {
+  background: palegreen;
+}
+
+.form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+
+}
+
+.green
+{
+    color: #91976c;
+    font-weight: bold;
+}
+
+.red
+{
+    color: #930000;
+    text-decoration-line: line-through;
+    font-weight: bold;
+}
+
+.orange
+{
+    color: #CC7300;
+    font-weight: bold;
+}

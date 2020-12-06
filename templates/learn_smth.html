@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Learn - {{ topic }}
+{% endblock %}
+
+{% block main %}
+    <div class="container" style= "background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+        <!-- bread crumbs -->
+        <div style="background-color: transparent;">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb" style="background-color: transparent; margin-bottom: 0; padding-bottom: 0;">
+                <li class="breadcrumb-item"><a class="green_link" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="green_link" href="/learn">Learn</a></li>
+                <li class="breadcrumb-item active" style="color: #6a7347" aria-current="page">{{ topic }}</li>
+              </ol>
+            </nav>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 1em; padding-top: 1em;">{{ topic }}</h1>
+
+        <div style="margin-left: 2em; margin-right: 2em;">
+            {{ text | safe}}
+        </div>
+
+        <!-- button group -->
+        <div style="display: inline-block; margin-bottom: 2em; margin-left: 2em">
+            <a class="btn btn2" style="margin-right: 1em; margin-bottom: 1em" href="#">MARK AS READ</a>
+            <a class="btn btn2" style="margin-right: 1em; margin-bottom: 1em" href="#">PRACICE</a>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

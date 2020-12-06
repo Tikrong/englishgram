@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Exercise Blanks
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="text-align: center; margin-bottom: 2em; margin-top: 1em">
+        <h2>{{ exercise_name }}</h1>
+        <h5>{{ description }}</h4>
+    </div>
+
+    <div class="container mobile" style="background-color: #f1edce; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+        <div style="padding-top: 1em;">
+        {{ question | safe }}
+        </div>
+
+        <form action="/exercise_blank" method="post" style="margin-top: 1.5em;">
+            <div class="form-group" style="display: inline-block;">
+                <input autocomplete="off" style="margin: 0; vertical-align: bottom" autofocus class="form-control input-reg" name="answer" placeholder="Your answer" type="text">
+                <button class="btn btn2" style="vertical-align: bottom" type="submit">Submit</button>
+            </div>
+        </form>
+
+        <hr style="margin-top: 1em;">
+
+        <div style="display: inline-block; width: 100%; margin-bottom: 1em;">
+            <div style="float: left">Question {{ question_number + 1 }} out of {{ total_questions }}</div>
+            <div style="float: right;">Correct answers: {{ correct }}</div>
+            <div style="display: block; text-align: right; clear: both;">Wrong answers: {{ wrong }}</div>
+        </div>
+
+        <!--Help group -->
+        <div>
+            <a class="btn btn2" style="margin-bottom: 1em;" data-toggle="collapse" href="#help" role="button" aria-expanded="false" aria-controls="help">
+                Need help?
+            </a>
+
+            <div class="collapse" id="help" style="margin-bottom: 1em;">
+                    <p>Wrong answers are colored in red - <span class="red">wrong</span></p>
+                    <p>Correct anwers are colored in green - <span class="green">correct</span></p>
+                    <br>
+            </a>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

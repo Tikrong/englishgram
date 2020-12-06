@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Exercise with multiple choice
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div>
+            <h1>Here are the questions</h1>
+            <h4>Choose the correct answer</h4>
+        </div>
+        <div>
+            Question
+        </div>
+
+        <form action="/exercise_multiple_choice" method="post" style="margin-top: 15px">
+            <div class="form-group">
+                <input type="radio" name="joke" value="option a" /> A Bed
+                <input type="radio" name="joke" value="option b" /> A Clock
+                <input type="radio" name="joke" value="option c" /> A Snake
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+
+        <div>
+            {{ answer }}
+        </div>
+    </div>
+
+
+{% endblock %}

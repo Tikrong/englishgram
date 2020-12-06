@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Panel - Users
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+		<div class="row" style="max-width: 100%; width: 100%; margin-right:0; margin-left:0">
+			<aside class="col-md" style="background-color: #454E25;  color: white;
+			overflow-y: auto; position: relative; max-width: 100%; width: 100%;">
+				<h4 style="margin-top: 1em;">ADMIN PANEL</h4>
+				<div style="display: block;">
+					<a class="white_link" href="/users">Users</a>
+					<a class="white_link" href="/admin_panel/questions">Questions</a>
+					<a class="white_link" href="/admin_panel/lections">Lections</a>
+					<a class="white_link" href="/admin_panel/activity">Activity</a>
+					<a class="white_link" href="/admin_panel/ratings">Ratings</a>
+					<a class="white_link" href="/feedback">Feedback</a>
+				</div>
+			</aside>
+
+			<main class="col-md" style="overflow: auto; flex-grow: 1;">
+				<div class="container">
+					<h4 style="margin-top: 1em;">USERS</h4>
+					<hr style="margin-left:0;">
+					<p>Here will be content</p>
+
+					<!-- button group -->
+					<nav class="navbar navbar-expand-lg navbar-light" style="padding-left: 0; margin-left: 0;">
+          				<button style="margin-bottom: 20px;" class="navbar-toggler" type="button"
+		                      data-toggle="collapse" data-target="#exercises" aria-controls="exercises"
+		                      aria-expanded="false" aria-label="Toggle navigation">
+            				<span class="navbar-toggler-icon"></span>Menu
+          				</button>
+
+          				<div class="collapse navbar-collapse" id="exercises">
+
+			              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin: 0; padding: 0">
+			                <li class="nav-item">
+			                  <a style="margin-left: 0;" class="nav-link"  id="#users" data-toggle="pill" href="#users" role="tab"
+			                        aria-controls="showall" aria-selected="true">LIST OF USERS</a>
+			                </li>
+			                <li class="nav-item">
+			                  <a class="nav-link active"  id="edit_user" data-toggle="pill" href="#edit" role="tab"
+			                        aria-controls="showall" aria-selected="false">EDIT USER</a>
+			                </li>
+			                <li class="nav-item">
+			                  <a class="nav-link"  id="stats" data-toggle="pill" href="#statistics" role="tab"
+			                        aria-controls="showall" aria-selected="false">STATISTICS</a>
+			                </li>
+
+              			</ul>
+			          </div>
+			        </nav>
+
+					<!-- optional content -->
+					<div class="tab-content" id="pills-tabContent" style="">
+				        <!-- list of users -->
+				        <div class="tab-pane fade" id="users" style="">
+							<p>list of users</p>
+
+							<div class="container" style="padding-left:0">
+							<table class="table" style="text-align: left;">
+		                        <thead>
+		                            <tr>
+		                                <th>User ID</th>
+		                                <th>Username</th>
+		                                <th>E-mail</th>
+		                                <th>Date of registration</th>
+		                            </tr>
+		                        </thead>
+		                        <tbody>
+									{% for user in users %}
+		                            <tr>
+		                                    <td>{{ user["id"] }}</td>
+		                                    <td>{{ user["username"] }}</td>
+		                                    <td>{{ user["email"] }}</td>
+		                                    <td>Add to DB this info</td>
+		                            </tr>
+		                            {% endfor %}
+
+		                    </table>
+		                    </div>
+		                <div style="padding-bottom: 18em"></div>
+
+				        </div>
+
+				        <!-- edit user -->
+				        <div class="tab-pane fade show active" id="edit" style="">
+							<p>Enter username to find user. Then choose what data you want to change, enter
+							new data and save changes.</p>
+
+							<form action="/users" method="post" style="margin-top: 1.5em;">
+					            <div class="form-group" style="display: inline-block;">
+					                <input autocomplete="off" style="margin: 0; vertical-align: bottom" autofocus class="form-control input-reg" name="username" placeholder="Username" type="text">
+					                <button class="btn btn2" style="vertical-align: bottom" type="submit">Find</button>
+					            </div>
+					        </form>
+
+					        {% if user %} <!-- check that user was found -->
+					        <p>User has been found</p>
+
+					        <table class="table" style="text-align: left;">
+		                        <tbody>
+		                            <tr>
+		                                    <td>Username: {{ user[0]["username"] }}</td>
+		                                    <td><a style="padding-top:0; padding-bottom:0" class="btn btn2"
+		                                    data-toggle="collapse" href="#username_change" role="button">CHANGE</a></td>
+		                            </tr>
+		                            <tr>
+		                                    <td>Password: password is hashed</td>
+		                                    <td><a style="padding-top:0; padding-bottom:0" class="btn btn2"
+		                                    data-toggle="collapse" href="#password_change" role="button">CHANGE</a></td>
+		                            </tr>
+		                            <tr>
+		                                    <td>E-mail: {{ user[0]["email"] }}</td>
+		                                    <td><a style="padding-top:0; padding-bottom:0" class="btn btn2"
+		                                    data-toggle="collapse" href="#email_change" role="button">CHANGE</a></td>
+		                            </tr>
+
+
+		                    </table>
+		                    <!-- changing username -->
+		                    <div class="collapse" id="username_change">
+								<form action="/users" method="post" style="margin-top: 1.5em;">
+						            <div class="form-group" style="display: inline-block;">
+						                <input autocomplete="off" style="margin: 0; vertical-align: bottom" autofocus class="form-control input-reg"
+						                name="username_change" placeholder="New username" type="text">
+						                <button class="btn btn2" style="vertical-align: bottom" type="submit">SUBMIT</button>
+						            </div>
+					        	</form>
+							</div>
+
+							<!-- changing password -->
+		                    <div class="collapse" id="password_change">
+							  <form action="/users" method="post" style="margin-top: 1.5em;">
+						            <div class="form-group" style="display: inline-block;">
+						                <input autocomplete="off" style="margin: 0; vertical-align: bottom" autofocus class="form-control input-reg"
+						                name="password_change" placeholder="New password" type="text">
+						                <button class="btn btn2" style="vertical-align: bottom" type="submit">SUBMIT</button>
+						            </div>
+					        	</form>
+							</div>
+
+							<!-- changing email -->
+		                    <div class="collapse" id="email_change">
+							  <form action="/users" method="post" style="margin-top: 1.5em;">
+						            <div class="form-group" style="display: inline-block;">
+						                <input autocomplete="off" style="margin: 0; vertical-align: bottom" autofocus class="form-control input-reg"
+						                name="email_change" placeholder="New E-mail" type="text">
+						                <button class="btn btn2" style="vertical-align: bottom" type="submit">SUBMIT</button>
+						            </div>
+					        	</form>
+							</div>
+								{% if status %}
+									{{ status }}
+								{% endif %}
+
+							<div style="padding-bottom: 19em"></div>
+							{% else %}
+							<div style="padding-bottom: 32em"></div>
+
+							{% endif %}
+
+				        </div>
+
+				        <!-- statistics -->
+				        <div class="tab-pane fade" id="statistics" style="">
+							<p>statistics</p>
+								<div style="padding-bottom: 42em"></div>
+
+				        </div>
+
+
+				    </div> <!-- div with optional content -->
+
+				</div>
+			</main>
+
+
+{% endblock %}

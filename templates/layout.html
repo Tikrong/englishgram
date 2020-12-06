@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico.png" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- scripts -->
+        <script src="/static/myscripts.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title>EnglishGRAM: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #313914;">
+            <a class="navbar-brand"  href="/" style="margin-left: 80px; color: white;">
+            <img src="/static/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    EnglishGRAM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                {% if session.user_id %}
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link active" href="/" style="color: white;">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/exercise" style="color: white;">Exercise</a>
+                        <a class="nav-item nav-link" href="/learn" style="color: white;">Learn</a>
+                        <a class="nav-item nav-link" href="/about" style="color: white;">About</a>
+                    </div>
+
+                    <!-- Login/logout group -->
+                    <div class="navbar-nav ml-auto" style="margin-right: 80px;">
+                        <a class="nav-item nav-link" href="/score" style="color: white;">Score</a>
+                {% if session.access_level > 1 %}
+                        <a class="nav-item nav-link" href="/users" style="color: white;">Admin panel</a>
+                {% endif %}
+                        <a class="nav-item nav-link" href="/logout" style="color: white;">Logout</a>
+                    </div>
+
+                {% else %}
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link active" href="/" style="color: white;">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/learn" style="color: white;">Learn</a>
+                        <a class="nav-item nav-link" href="/about" style="color: white;">About</a>
+                    </div>
+
+
+                    <div class="navbar-nav ml-auto" style="margin-right: 80px;">
+                      <a class="nav-item nav-link" href="/login" style="color: white;">Login</a>
+                      <a class="nav-item nav-link" href="/register" style="color: white;">Register</a>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+            <div style="margin-top: 15px; text-align: center;">
+                <a href="#" class="fa fa-vk fa-2x" aria-hidden="true"></a>
+                <a href="#" class="fa fa-instagram fa-2x" aria-hidden="true"></a>
+                <a href="#" class="fa fa-twitter-square fa-2x" aria-hidden="true"></a>
+                <a href="#" class="fa fa-facebook-square fa-2x" aria-hidden="true"></a>
+            </div>
+        </footer>
+
+    </body>
+
+</html>

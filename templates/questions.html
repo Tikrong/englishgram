@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Panel - questions
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+		<div class="row" style="max-width: 100%; width: 100%; margin-right:0; margin-left:0">
+			<aside class="col-md" style="background-color: #454E25;  color: white;
+			overflow-y: auto; position: relative; max-width: 100%; width: 100%;">
+				<h4 style="margin-top: 1em;">ADMIN PANEL</h4>
+				<div style="display: block;">
+					<a class="white_link" href="/users">Users</a>
+					<a class="white_link" href="/admin_panel/questions">Questions</a>
+					<a class="white_link" href="/admin_panel/lections">Lections</a>
+					<a class="white_link" href="/admin_panel/activity">Activity</a>
+					<a class="white_link" href="/admin_panel/ratings">Ratings</a>
+					<a class="white_link" href="/feedback">Feedback</a>
+				</div>
+			</aside>
+
+			<main class="col-md" style="overflow: auto; flex-grow: 1;">
+				<div class="container">
+					<h4 style="margin-top: 1em;">QUESTIONS</h4>
+					<hr style="margin-left:0;">
+					<p>Coming later</p>
+					<div style="padding-bottom: 45em"></div>
+
+				</div>
+			</main>
+
+
+{% endblock %}

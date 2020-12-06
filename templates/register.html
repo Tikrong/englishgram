@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <img style="position: absolute; bottom: 0em; height: auto; width: 100%" src="/static/castle3.jpg">
+    <div class="container" style="display: block; position: relative; text-align: center; padding-bottom: 0px; padding-top: 3em;">
+      <h2>CREATE A PROFILE TO START LEARNING</h2>
+
+      <form action="/register" method="post" style="margin-top: 2em;" onsubmit="not_empty('username', 'password', 'email')">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control input-reg" name="username" placeholder="Username" id="username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control input-reg" name="password" placeholder="Password" type="password" id="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control input-reg" name="confirmation" placeholder="Repeat password" type="password">
+        </div>
+        <div class="form-group">
+          <input autocomplete="off" class="form-control input-reg" name="email" placeholder="E-mail" type="text" id="email">
+      </div>
+        <button class="btn btn2" type="submit">REGISTER</button>
+      </form>
+
+      <div style="margin-top: 2em; padding-bottom: 1em;">
+        <p>Already have an account?
+        <a class="btn btn2"
+        style="display:inline; padding-top: 0; padding-bottom: 0; margin-left: 1em;"
+        href="/login" role="button">LOGIN</a>
+        </p>
+      </div>
+
+    </div>
+
+
+
+{% endblock %}

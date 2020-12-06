@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <img style="position: absolute; bottom: 0em; height: auto; width: 100%" src="/static/castle3.jpg">
+    <div class="container" style="display: block; text-align: center; position: relative; padding-bottom: 0px; padding-top: 3em;">
+      <h2>LOGIN TO START LEARNING</h2>
+
+      <form action="/login" method="post" style="margin-top: 2em;">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control input-reg" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control input-reg" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn2" type="submit">LOG IN</button>
+      </form>
+
+      <div style="margin-top: 2em; padding-bottom: 1em;">
+        <p>Forgot password? Click here
+        <a class="btn btn2"
+        style="display:inline; padding-top: 0; padding-bottom: 0; margin-left: 1em;"
+        href="/recover_password" role="button">Recover</a>
+        </p>
+      </div>
+
+    </div>
+
+
+
+{% endblock %}

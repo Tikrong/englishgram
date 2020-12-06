@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="padding-top: 2em">
+      <h1 style="margin-top: 1em">LEARN ENGLISH GRAMMAR WITH US</h1>
+      <h5>IMPROVE YOUR ENGLISH ONLINE FOR FREE</h5>
+
+      {% if session.user_id %}
+      <button type="button" class="btn btn-outline-secondary btn2" onclick="window.location.href = '/exercise';"
+      style="margin-top: 1em; text-align: center;">
+        <h2 style="margin-left: 0.3em; margin-right: 0.3em; margin-top: 0.1em; margin-bottom: 0.1em; padding: 0">START LEARNING</h2></button>
+      {% else %}
+      <button type="button" class="btn btn-outline-secondary btn2" onclick="window.location.href = '/register';"
+      style="margin-top: 1em; text-align: center;">
+        <h2 style="margin-left: 0.3em; margin-right: 0.3em; margin-top: 0.1em; margin-bottom: 0.1em; padding: 0">START LEARNING</h2></button>
+
+      {% endif %}
+
+    </div>
+
+      <img src="/static/castle_mainpage.jpg" style="width: 100%">
+
+
+
+    <div class="container">
+      <p style="margin-top: 1.5em">
+        Learning grammar is never an easy task and we are here to help you.  If you need to prepare
+        for an upcoming exam, or want to improve your accuracy when speaking,
+        or just want to practice English grammar, you are in the right place.
+      </p>
+
+      <hr>
+      <h4>HOW TO GET STARTED</h4>
+      <p>Whether you are starting with the basics or want to understand complex topics,
+        we have everything covered. You are welcome to visit "LEARN" section,
+        choose a topic you want and read clear grammar explanations and study example sentences.
+        Also you may visit "EXERCISE" section and put your knowledge into practice. </p>
+
+      {% if session.user_id %}
+        <button type="button" class="btn btn-outline-secondary btn2" onclick="window.location.href = '/exercise';">START LEARNING</button>
+      {% else %}
+        <button type="button" class="btn btn-outline-secondary btn2" onclick="window.location.href = '/register';">START LEARNING</button>
+      {% endif %}
+      <hr>
+
+      <h4>CHECK YOUR PROGRESS</h4>
+      <p>We have nice and simple system that helps you track your progress.
+          It shows your scores in exercises and remembers which grammar
+          topics you have studied already. </p>
+      <hr>
+
+      <h4>HELP US BE BETTER</h4>
+      <p>We want to help you the best way we can and we need your feedback.
+        Wasn't able to find a particular topic? Want to get more exercises to practice
+          some grammar topics? Have a suggestion to improve the website? Feel free to share.
+          There is a contact form in the "ABOUT" section, or you can reach us in any social media
+          using links in the bottom of the page. </p>
+
+      <br>
+
+
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block main %}
+    <img style="position: absolute; bottom: 0em; height: auto; width: 100%" src="/static/castle2.jpg">
+    <div class="container" style="position: relative;">
+      <h2 style="margin-top: 1em;">ABOUT ENGLISHGRAM</h2>
+      <p>ENGLISHGRAM is a free website created for those, who want to improve their knowledge in English grammar.
+      It was created as a final project for Harvard University CS50 course.
+      I hope you will find this project useful.</p>
+
+      <p>If you have any questions or suggestions you can contact me via email: eglishgram@mail.com <br>
+        or you can use this contact form:
+      </p>
+
+      {% if status %}
+        <p>{{ status }}</p>
+
+      {% else %}
+
+      <!-- feedback form -->
+      <div style="padding-bottom: 1em;">
+        <form action="/about" method="post" onsubmit="not_empty('email', 'name', 'message')">
+          <div class="form-group">
+              <input autocomplete="off" autofocus class="form-control input-reg" name="name" placeholder="Name" type="text" id="name"
+                                  >
+          </div>
+          <div class="form-group">
+              <input class="form-control input-reg" name="email" placeholder="E-Mail" type="text" id="email">
+          </div>
+          <div class="form-group" style="margin-bottom: 0.5em;">
+              <textarea class="form-control input-reg" rows="5" cols="50" style="resize: none;"
+              name="message" placeholder="Type your message here" id="message"></textarea>
+          </div>
+
+          <button class="btn btn2" type="submit" style="padding-top:" id="submit_text">SEND</button>
+        </form>
+      </div>
+
+    {% endif %}
+
+    </div>
+
+
+{% endblock %}

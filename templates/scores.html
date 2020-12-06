@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Scores
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="container">
+
+            <h2 style="text-align: center; margin-top: 1em;">YOUR RESULTS</h2>
+
+            <!-- button group -->
+
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button style="margin-bottom: 20px;" class="navbar-toggler" type="button"
+                          data-toggle="collapse" data-target="#exercises2" aria-controls="exercises2" aria-expanded="false"
+                          aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>Menu
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="exercises2">
+
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin: 0; padding: 0">
+                    <li class="nav-item">
+                      <a class="nav-link active"  id="showall-tab" data-toggle="pill" href="#exercises" role="tab"
+                            aria-controls="exercises" aria-selected="true">EXERCISES</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  id="showall-tab" data-toggle="pill" href="#lectures" role="tab"
+                            aria-controls="lectures" aria-selected="false">LECTURES</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  id="showall-tab" data-toggle="pill" href="#help" role="tab"
+                            aria-controls="help" aria-selected="false">HELP</a>
+                    </li>
+
+                  </ul>
+                </div>
+            </nav>
+
+            <hr>
+
+    <div class="tab-content" id="pills-tabContent" style="">
+
+<!-- exercises information -->
+
+        <div class="tab-pane fade show active" id="exercises" style="">
+        {% for topic in topics %}
+            <div style="margin-top: 1em;">
+                <h3 style="text-transform: uppercase;">{{ topic["topic"] }}</h3>
+                <div class="progress" style="background-color: #d1d2ab;">
+                     <div class="progress-bar" role="progressbar" style="width: {{ topic['score'] }}%; background-color: #454E25;"
+                     aria-valuenow="{{ topic['score'] }}" aria-valuemin="0" aria-valuemax="{{ topic['max_points'] }}"></div>
+                </div>
+
+                <!-- information -->
+                <div  style="margin-top: 1em;">
+                    <div>TOPIC SCORE: {{ topic["score"] }}%</div>
+                    <div>EXERCISES DONE: {{ topic["exercises_done"] }} out of {{ topic["exercises_total"] }} </div>
+                    <div>CORRECTNESS: {{topic["correctness"]}}%</div>
+                </div>
+            </div>
+
+            <!-- Show/hide exercises -->
+            <div style="margin-top: 0.5em;">
+              <a class="btn btn2" data-toggle="collapse" href="#collapse{{ topic["topic"] }}" role="button"
+              aria-expanded="false" aria-controls="collapseExample">
+                Show details
+              </a>
+            </div>
+            <div class="collapse" style="background-color: #f1edce; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-top: 1em;" id="collapse{{ topic["topic"] }}">
+                <div style="margin-left: 1em; margin-right: 1em;">
+                    <table class="table" style="text-align: left;">
+                        <thead>
+                            <tr>
+                                <th>EXERCISE</th>
+                                <th>SCORE</th>
+                                <th>DATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for exercise in topic["exercises"] %}
+                            <tr>
+                                    <td>{{ exercise["name"] }}</td>
+                                {% if exercise["correct_answers"] %}
+                                    <td> {{ '%0.0f' % (exercise["correct_answers"] / exercise["quantity"] * 100) }}%</td>
+                                {% else %}
+                                    <td> Not done</td>
+                                {% endif %}
+                                {% if exercise["correct_answers"] %}
+                                    <td>{{ exercise['date'] }}</td>
+                                {% else %}
+                                    <td> Not done</td>
+                                {% endif %}
+
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        </div> <!-- closing exercises tab -->
+
+        <!-- lectures information  -->
+        <div class="tab-pane fade" id="lectures" style="">
+            <p>COMING SOON</p>
+        </div>
+
+        <!-- help information -->
+        <div class="tab-pane fade" id="help" style="">
+            <p>This gradebook is here to help you track your progress. Click on EXERCISES button to see
+            your results in exercises or click on LECTURES button to see which lectures you have already
+            read and which you have not. The progress bar in exercises section shows your total progress
+            in the chosen area.</p>
+
+            <p>The correctness show a share of correct answers in the exercises you have already done,
+            not considering those you haven not done.</p>
+
+            <p>You may click on an exercise or a lecture and go to its page.</p>
+        </div>
+
+    </div> <!-- closing tab content -->
+
+    <br>
+    </div>
+
+
+{% endblock %}

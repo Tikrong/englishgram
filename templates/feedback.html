@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Panel - Feedback
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid" style="padding-right: 0; padding-left: 0;">
+		<div class="row" style="max-width: 100%; width: 100%; margin-right:0; margin-left:0">
+			<aside class="col-md" style="background-color: #454E25;  color: white;
+			overflow-y: auto; position: relative; max-width: 100%; width: 100%;">
+				<h4 style="margin-top: 1em;">ADMIN PANEL</h4>
+				<div style="display: block;">
+					<a class="white_link" href="/users">Users</a>
+					<a class="white_link" href="/admin_panel/questions">Questions</a>
+					<a class="white_link" href="/admin_panel/lections">Lections</a>
+					<a class="white_link" href="/admin_panel/activity">Activity</a>
+					<a class="white_link" href="/admin_panel/ratings">Ratings</a>
+					<a class="white_link" href="/feedback">Feedback</a>
+				</div>
+			</aside>
+
+			<main class="col-md" style="overflow: auto; flex-grow: 1;">
+				<div class="container">
+					<h4 style="margin-top: 1em;">FEEDBACK</h4>
+					<hr style="margin-left:0;">
+
+					<p>Here you may read feedback from users. Archive messages, that you want to save in the database, but do not need
+					to see here.</p>
+
+					<table class="table" style="text-align: left;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Tag</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+							{% for message in messages %}
+                            <tr>
+                                <td>{{ message["id"] }}</td>
+                                <td>{{ message["name"] }}</td>
+                                <td>{{ message["tag"] }}</td>
+                                <td>{{ message["message"] }}<br>My e-mail is: {{ message["email"] }}</td>
+								<td>{{ message["date"] }}</td>
+								<td>
+									<form style="padding-top:0; padding-bottom:0; display: inline;" action="/feedback" method="post"
+												onsubmit="return confirm('Do you really want to archive this massage?');">
+										<button style="padding-top:0; padding-bottom:0" class="btn btn_orange"
+										name="archive" value="{{ message["id"] }}" type="submit">archive</button>
+									</form>
+									<form style="padding-top:0; padding-bottom:0; display: inline;" action="/feedback" method="post"
+												onsubmit="return confirm('Do you really want to delete this message?');">
+										<button style="padding-top:0; padding-bottom:0" class="btn btn_red"
+										name="delete" value="{{ message["id"] }}" type="submit" id="submit_text">delete</button>
+									</form>
+
+								</td>
+                            </tr>
+                            {% endfor %}
+
+
+
+                    </table>
+					{% if not messages %}
+					<p>No messages yet</p>
+					{% endif %}
+
+				<div style="padding-bottom: 38em"></div>
+				</div>
+			</main>
+
+
+{% endblock %}
